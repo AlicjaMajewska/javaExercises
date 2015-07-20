@@ -61,7 +61,9 @@ public class Card implements Comparable<Card> {
 		}
 			return 0;               
 	}
-	
+	public VALUE getValue(){
+		return value;
+	}
 	
 
 }

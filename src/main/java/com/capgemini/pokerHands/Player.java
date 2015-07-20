@@ -2,7 +2,9 @@ package com.capgemini.pokerHands;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Player {
 	private List<Card> sortedHand = new ArrayList<Card>();
@@ -40,8 +42,8 @@ public class Player {
 			break;
 		case 1:
 			if(isStraight() && isFlush()){
-				if(frequencyOfCards.get(0).getCard().compareTo(new Card("AS")) == 0){
-					rank = RANKS.ROYAL_FLASH;
+				if(frequencyOfCards.get(0).getCardValue().equals(VALUE.A)){
+					rank = RANKS.ROYAL_FLUSH;
 					break;
 				}
 				rank = RANKS.STRAIGHT_FLUSH;
@@ -77,19 +79,18 @@ public class Player {
 	}
 
 	private void fillListFrequencyOfCards() {
-		Card prevoiusCard = sortedHand.get(0);
-		Integer frequency = new Integer(1);
-		for (int i = 1; i < sortedHand.size(); ++i) {
-			if (0 == prevoiusCard.compareTo(sortedHand.get(i))) {
-				++frequency;
-			} else {
-				frequencyOfCards.add(new FrequencyOfCard(prevoiusCard,
-						frequency));
-				frequency = 1;
-				prevoiusCard = sortedHand.get(i);
+		HashMap<VALUE, Integer> cardFrequencyMap = new HashMap<VALUE,Integer>();
+		for (Card card : sortedHand) {
+			if(!cardFrequencyMap.containsKey(card.getValue())){
+				cardFrequencyMap.put(card.getValue(), new Integer(0));
 			}
+			cardFrequencyMap.put(card.getValue(), cardFrequencyMap.remove(card.getValue()) + 1 );
 		}
-		frequencyOfCards.add(new FrequencyOfCard(prevoiusCard, frequency));
+		for(Map.Entry<VALUE, Integer> entry : cardFrequencyMap.entrySet()){
+			frequencyOfCards.add(new FrequencyOfCard(entry.getKey(), entry.getValue()));
+		}
+
+		
 	}
 
 	public RANKS getRank() {

@@ -11,6 +11,7 @@ import org.junit.Test;
 import com.capgemini.pokerHands.Card;
 import com.capgemini.pokerHands.FrequencyOfCard;
 import com.capgemini.pokerHands.Player;
+import com.capgemini.pokerHands.VALUE;
 
 public class PlayerPokerTest {
 	Player player1 = new Player("8C TS KC 9H 4S");
@@ -64,12 +65,11 @@ public class PlayerPokerTest {
 	@Test
 	public void shouldCreateSortedListOfFrequencyOfCardsPlayer1PrivateAccessor() {
 		List<FrequencyOfCard> freqCardList = new ArrayList<FrequencyOfCard>(
-				Arrays.asList(new FrequencyOfCard(new Card("KC"),
-						new Integer(1)), new FrequencyOfCard(new Card("TS"),
-						new Integer(1)), new FrequencyOfCard(new Card("9H"),
-						new Integer(1)), new FrequencyOfCard(new Card("8C"),
-						new Integer(1)), new FrequencyOfCard(new Card("4S"),
-						new Integer(1))));
+				Arrays.asList(new FrequencyOfCard(VALUE.K,	new Integer(1)),
+						new FrequencyOfCard(VALUE._10, new Integer(1)), 
+						new FrequencyOfCard(VALUE._9, new Integer(1)),
+						new FrequencyOfCard(VALUE._8 ,new Integer(1)),
+						new FrequencyOfCard(VALUE._4,new Integer(1))));
 
 		try {
 			Field field;
@@ -90,9 +90,8 @@ public class PlayerPokerTest {
 	@Test
 	public void shouldCreateSortedListOfFrequencyOfCardsPlayer2() {
 		List<FrequencyOfCard> freqCardList = new ArrayList<FrequencyOfCard>(
-				Arrays.asList(new FrequencyOfCard(new Card("KC"),
-						new Integer(3)), new FrequencyOfCard(new Card("AH"),
-						new Integer(2))));
+				Arrays.asList(new FrequencyOfCard(VALUE.K,	new Integer(3)), 
+						new FrequencyOfCard(VALUE.A, new Integer(2))));
 		try {
 			Field field;
 			field = Player.class.getDeclaredField("frequencyOfCards");
@@ -111,10 +110,9 @@ public class PlayerPokerTest {
 	@Test
 	public void shouldCreateSortedListOfFrequencyOfCardsPlayer3() {
 		List<FrequencyOfCard> freqCardList = new ArrayList<FrequencyOfCard>(
-				Arrays.asList(new FrequencyOfCard(new Card("8C"),
-						new Integer(2)), new FrequencyOfCard(new Card("6C"),
-						new Integer(2)), new FrequencyOfCard(new Card("AS"),
-						new Integer(1))));
+				Arrays.asList(new FrequencyOfCard(VALUE._8,	new Integer(2)), 
+						new FrequencyOfCard(VALUE._6, new Integer(2)), 
+						new FrequencyOfCard(VALUE.A, new Integer(1))));
 		try {
 			Field field;
 			field = Player.class.getDeclaredField("frequencyOfCards");
@@ -133,10 +131,9 @@ public class PlayerPokerTest {
 	@Test
 	public void shouldCreateSortedListOfFrequencyOfCardsPlayer4() {
 		List<FrequencyOfCard> freqCardList = new ArrayList<FrequencyOfCard>(
-				Arrays.asList(new FrequencyOfCard(new Card("KS"),
-						new Integer(2)), new FrequencyOfCard(new Card("QH"),
-						new Integer(2)), new FrequencyOfCard(new Card("AS"),
-						new Integer(1))));
+				Arrays.asList(new FrequencyOfCard(VALUE.K, new Integer(2)),
+						new FrequencyOfCard(VALUE.Q, new Integer(2)), 
+						new FrequencyOfCard(VALUE.A,new Integer(1))));
 		try {
 			Field field;
 			field = Player.class.getDeclaredField("frequencyOfCards");

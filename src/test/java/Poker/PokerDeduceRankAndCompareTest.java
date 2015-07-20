@@ -32,7 +32,7 @@ public class PokerDeduceRankAndCompareTest {
 	@Test
 	public void shouldDeduceRoyalFlush() {
 		Player player = new Player("TC QC JC AC KC");
-		Assert.assertEquals(RANKS.ROYAL_FLASH, player.getRank());
+		Assert.assertEquals(RANKS.ROYAL_FLUSH, player.getRank());
 	}
 	@Test
 	public void shouldDeduceStraightFlush() {

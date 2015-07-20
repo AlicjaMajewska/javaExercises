@@ -1,17 +1,17 @@
 package Poker;
 
 import org.junit.Assert;
-
 import org.junit.Before;
 import org.junit.Test;
 
 import com.capgemini.pokerHands.Card;
 import com.capgemini.pokerHands.FrequencyOfCard;
+import com.capgemini.pokerHands.VALUE;
 
 public class FrequencyOfCardTest {
-	FrequencyOfCard freq3Ace = new FrequencyOfCard(new Card("AC"), 3);
-	FrequencyOfCard freq2Ace= new FrequencyOfCard(new Card("AD"), 2);
-	FrequencyOfCard freq3King= new FrequencyOfCard(new Card("KD"), 3);
+	FrequencyOfCard freq3Ace = new FrequencyOfCard(VALUE.A, 3);
+	FrequencyOfCard freq2Ace= new FrequencyOfCard(VALUE.A, 2);
+	FrequencyOfCard freq3King= new FrequencyOfCard(VALUE.K, 3);
 	
 	
 	@Before
